@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Евдокимов Антон Сергеевич</title>
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+    <section class="doctorPage">
+        <div class="doctorPage__top">
+            <div class="doctorPage__container">
+                <nav class="breadcrumbs">
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/doctors">Специалисты</a></li>
+                        <li><a href="/">Евдокимов Антон Сергеевич</a></li>
+                    </ul>
+                </nav>
+        
+                <div class="doctorPage__card">
+                    <div class="doctorPage__card-left">
+                        <address>
+                            <img src="imgs/icons/mappin.gif" alt="mappin">
+                            <span>Москва, м. Фонвизинская</span>
+                        </address>
+                        <h1>Евдокимов Антон Сергеевич</h1>
+                        <h2>Главный врач, Врач-невролог, Рефлексотерапевт, Мануальный терапевт</h2>
+                        <p>Ведет прием пациентов с острой и хронической болью в шее, в спине. Владеет навыками мануально-мышечного тестирования, постизометрической и постреципрокной релаксации, миофасциального релиза. Специализируется на диагностике и лечении дегенеративной болезни позвоночника (устаревшее остеохондроз). Владеет навыками иглорефлексотерапии, фармакопунктуры (пролотерапии), физиотерапии.</p>
+                        <div class="doctorPage__price">
+                            <button type="button">Записаться на прием</button>
+                            <div class="doctorPage__price-info">
+                                <p>Прием гл врача первичный</p> 
+                                <p>(60 мин) - <strong>6 500 ₽</strong></p>
+                            </div>
+                        </div>
+                        <div class="doctorPage__trophies">
+                            <div>
+                                <img src="imgs/prodoctorov.png" alt="продокторов">
+                                <p>Премия Продокторов 2023 (3 место)</p>
+                            </div>
+                            <div>
+                                <img src="imgs/trophy.webp" alt="trophy">
+                                <p>Напоправку Премия "Выбор пациента 2023"</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="doctorPage__card-right">
+                        <img class="doctorPage__card-photo" src="https://static.tildacdn.com/tild6334-3233-4966-a338-666361356561/Untitled-41_2.jpg" alt="Евдокимов Антон Сергеевич">
+                        <button class="doctorPage__play">
+                            <img src="imgs/icons/play.svg" alt="play">
+                        </button>
+                    </div>
+                    
+                </div>
+
+                <div class="doctorPage__faq">
+                    <div class="doctorPage__collapsible">
+                        <div class="doctorPage__collapsible-question">
+                            <p>Что лечит</p>
+                            <button type="button" class="doctorPage__collapsible-btn" onclick="toggleCollapsible(this)">
+                                <img src="imgs/icons/arrow.webp" alt="">
+                            </button>
+                        </div>
+                        <div class="doctorPage__collapsible-answer">
+                            <p>Дегенеративные заболевания позвоночника</p>
+                            <p>Безоперационное лечение грыжи межпозвонкового диска методом Ткачева Епифанова</p>
+                            <p>Острый и хронический болевой синдром</p>
+                            <p>Заболевания центральной и периферической нервной системы</p>
+                            <p>Патологии позвоночника</p>
+                            <p>Заболевания суставов</p>
+                        </div>
+                    </div>
+
+                    <div class="doctorPage__collapsible">
+                        <div class="doctorPage__collapsible-question">
+                            <p>Чем владеет</p>
+                            <button type="button" class="doctorPage__collapsible-btn" onclick="toggleCollapsible(this)">
+                                <img src="imgs/icons/arrow.webp" alt="">
+                            </button>
+                        </div>
+                        <div class="doctorPage__collapsible-answer">
+                            <p>Мануально-мышечное тестирование</p>
+                            <p>Паравертебральные инъекции</p>
+                            <p>Фармакопунктура</p>
+                            <p>Постизометрическая релаксация</p>
+                            <p>Постреципрокная релаксация</p>
+                            <p>Физиотерапия</p>
+                            <p>Иглорефлексотерапия</p>
+                        </div>
+                    </div>
+
+                    <div class="doctorPage__collapsible">
+                        <div class="doctorPage__collapsible-question">
+                            <p>Образование</p>
+                            <button type="button" class="doctorPage__collapsible-btn" onclick="toggleCollapsible(this)">
+                                <img src="imgs/icons/arrow.webp" alt="">
+                            </button>
+                        </div>
+                        <div class="doctorPage__collapsible-answer">
+                            <p>2018 - Медицинский университет «Реавиз», ординатура по специальности «Неврология»</p>
+                            <p>2012 - Самарский Государственный Медицинский Университет, интернатура «терапия»</p>
+                            <p>2011 - Самарский Государственный Медицинский Университет, специальность «лечебное дело»</p>
+                            <h6>Повышение квалификации:</strong></h6>
+                            <p>2021 - Академия профессиональных стандартов, профессиональная переподготовка по программе «Мануальная терапия»</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Отзывы о враче</h3>
+                <div class="doctorPage__reviews">
+                    <div>
+                        <img src="https://static.tildacdn.com/tild3266-6332-4266-b063-366163653735/telegram-cloud-photo.jpg" alt="">
+                    </div>
+                    <div>
+                        <img src="https://static.tildacdn.com/tild6232-6330-4138-a362-383734333061/telegram-cloud-photo.jpg" alt="">
+                    </div>
+                    <div>
+                        <img src="https://static.tildacdn.com/tild3266-6332-4266-b063-366163653735/telegram-cloud-photo.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="doctorPage__video">
+            <div class="doctorPage__container">
+                <h3>Экспертные видео</h3>
+                <div class="doctorPage__video-box">
+                    <div>
+                        <video muted="" loop="" controls="">
+                            <source src="https://cdnv.boomstream.com/balancer/5qHd1tq7-yYcwxVUJ.mp4#t=0.001" type="video/mp4">
+                        </video>
+                    </div>
+                    <div>
+                        <video muted="" loop="" controls="">
+                            <source src="https://cdnv.boomstream.com/balancer/5qHd1tq7-yYcwxVUJ.mp4#t=0.001" type="video/mp4">
+                        </video>
+                    </div>
+                    <div>
+                        <video muted="" loop="" controls="">
+                            <source src="https://cdnv.boomstream.com/balancer/5qHd1tq7-yYcwxVUJ.mp4#t=0.001" type="video/mp4">
+                        </video>
+                    </div>
+                    <div>
+                        <video muted="" loop="" controls="">
+                            <source src="https://cdnv.boomstream.com/balancer/5qHd1tq7-yYcwxVUJ.mp4#t=0.001" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="doctorPage__container">
+            <h3>Сертификаты врача</h3>
+            <div class="doctorPage__sertificates">
+                <div>
+                    <img src="https://static.tildacdn.com/tild6337-6431-4665-a235-663461393338/55D60C78-788A-4895-9.jpeg" alt="">
+                </div>
+                <div>
+                    <img src="https://static.tildacdn.com/tild6337-6431-4665-a235-663461393338/55D60C78-788A-4895-9.jpeg" alt="">
+                </div>
+                <div>
+                    <img src="https://static.tildacdn.com/tild6337-6431-4665-a235-663461393338/55D60C78-788A-4895-9.jpeg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
