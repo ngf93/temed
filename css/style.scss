@@ -62,6 +62,9 @@ body {
         border-radius: 0px 0px var(--radius) var(--radius);
         padding-top: var(--radius);
         padding-bottom: var(--radius);
+        @media (max-width: 991px) {
+            padding-bottom: 2em;
+        }
     }
 
     .breadcrumbs {
@@ -411,17 +414,28 @@ body {
             }
         }
         &-answer {
-            display: none;
-            padding: .5em 3em 1.5em;
-            p {
-                margin: .5em 0em;
-            }
-            h6 {
-                font-size: 1em;
-                margin-top: 2em;
-                margin-bottom: .5em;
-                font-weight: 500;
-                text-align: left;
+            max-height: 0px;
+            overflow: hidden;
+            transition: max-height 500ms ease-in;
+            &-box {
+                padding: .5em 3em 1.5em;
+                @media (max-width: 767px) {
+                    padding: .5em 2em 1.5em;
+                }
+                @media (max-width: 575px) {
+                    padding: .5em 1.5em 1em;
+                }
+
+                p {
+                    margin: .5em 0em;
+                }
+                h6 {
+                    font-size: 1em;
+                    margin-top: 2em;
+                    margin-bottom: .5em;
+                    font-weight: 500;
+                    text-align: left;
+                }
             }
         }
         &.active {
@@ -431,7 +445,7 @@ body {
                 }
             }
             .doctorPage__collapsible-answer {
-                display: block;
+                max-height: 500px;
             }
         }
     }
@@ -457,16 +471,27 @@ body {
     }
 
     &__reviews {
-        @include flex(row, center, flex-start, wrap);
+        width: 100%;
+        @include flex(row, center, flex-start, nowrap);
         gap: 2%;
+        @media (max-width: 991px) {
+            gap: 1em;
+            width: fit-content;
+        }
         div {
             width: 32%;
+            @media (max-width: 991px) {
+                width: 320px;
+            }
             img {
                 width: 100%;
                 border: 1px solid #e4e4e4;
                 border-radius: calc(var(--radius)/2);
             }
         }
+    }
+    .scrollbox {
+        overflow-x: auto;
     }
 
     &__video {
@@ -482,25 +507,39 @@ body {
             padding-top: calc(var(--radius)*5);
         }
         &-box {
-            @include flex(row, center, flex-start, wrap);
+            @include flex(row, center, flex-start, nowrap);
             gap: 1%;
+            @media (max-width: 991px) {
+                gap: 1em;
+                width: fit-content;
+            }
             div {
                 width: 24%;
+                @media (max-width: 991px) {
+                    width: 235px;
+                }
                 video {
                     width: 100%;
                     height: 470px;
                     object-fit: cover;
                     border-radius: calc(var(--radius)/4);
-                    opacity: 0.75;
-                    transform: translateY(10%);
-                    transition: 300ms ease-in;
-                    transition-property: transform, opacity;
-                    &.element-show {
-                        transform: translateY(0%);
-                        opacity: 1;
+                    
+                    @media (min-width: 992px) {
+                        opacity: 0.75;
+                        transform: translateY(10%);
+                        transition: 300ms ease-in;
+                        transition-property: transform, opacity;
+                        &.element-show {
+                            transform: translateY(0%);
+                            opacity: 1;
+                        }
                     }
+                    
                     @media (max-width: 1199px) {
                         height: 35vw;
+                    }
+                    @media (max-width: 991px) {
+                        height: 375px;
                     }
                 }
                 &:nth-child(2){
@@ -523,10 +562,14 @@ body {
     }
 
     &__sertificates {
-        @include flex(row, center, flex-start, wrap);
+        @include flex(row, flex-start, flex-start, wrap);
         gap: 2%;
         div {
             width: 32%;
+            @media (max-width: 575px) {
+                width: 49%;
+                margin-bottom: 1em;
+            }
             img {
                 width: 100%;
             }
