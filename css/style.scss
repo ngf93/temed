@@ -22,7 +22,6 @@
 html {padding: 0px;}
 body {
     font-family: 'Rubik';
-    font-size: 16px;
     padding: 0px;
     margin: 0px;
     color: #444444;
@@ -32,14 +31,28 @@ body {
 // styles start
 
 .doctorPage {
+    font-size: 16px;
     --radius: 2em;
     --main-color: #0e7496;
     background-color: #f4f7fa;
     padding-bottom: 3em;
+    *{box-sizing: border-box;}
+    @media (max-width: 767px) {
+        --radius: 1em;
+        font-size: 12px;
+    }
 
     &__container {
         max-width: 1160px;
         margin: 0px auto;
+        @media (max-width: 1199px) {
+            max-width: calc(100% - 100px);
+            margin: 0px 50px;
+        }
+        @media (max-width: 575px) {
+            max-width: calc(100% - 40px);
+            margin: 0px 20px;
+        }
     }
 
     &__top {
@@ -52,12 +65,15 @@ body {
     }
 
     .breadcrumbs {
-        font-size: 14px;
+        font-size: .9em;
         margin-bottom: 3em;
         ul {
             @include list();
-            @include flex(row, flex-start, center, nowrap);
+            @include flex(row, flex-start, center, wrap);
             li {
+                @media (max-width: 767px) {
+                    margin-bottom: .5em;
+                }
                 a {
                     color: #4c4c4c;
                     text-decoration: none;
@@ -85,17 +101,34 @@ body {
         background-color: #fff;
         border-radius: var(--radius);
         padding: var(--radius);
-        @include flex(row, space-between, flex-start, nowrap);
+        @include flex(row-reverse, space-between, flex-start, nowrap);
         gap: var(--radius);
         margin-bottom: 3em;
+        @media (max-width: 1199px) {
+            flex-wrap: wrap;
+        }
         &-left {
             width: 50%;
             padding: 2em 1em 0em;
+            opacity: 0;
+            transition: 300ms ease-in 500ms;
+            transition-property: opacity;
+            &.element-show {
+                opacity: 1;
+            }
+            @media (max-width: 1199px) {
+                width: 100%;
+                padding: 2em 0em 0em;
+            }
+
             address {
                 font-style: normal;
                 font-weight: 500;
                 @include flex(row, flex-start, center, nowrap);
                 margin-bottom: 1.5rem;
+                @media (max-width: 767px) {
+                    margin-bottom: 1em;
+                }
                 img {
                     width: 1.5em;
                     margin-right: .5em;
@@ -103,20 +136,35 @@ body {
             }
 
             h1 {
-                font-size: 36px;
+                font-size: 2.25em;
                 font-weight: 400;
                 text-align: left;
                 margin-top: 0px;
                 margin-bottom: 1.5rem;
+                transform: translateY(50%);
+                opacity: 0.5;
+                transition: 300ms ease-in 600ms;
+                transition-property: transform, opacity;
+                &.element-show {
+                    transform: translateY(0%);
+                    opacity: 1;
+                }
+                @media (max-width: 767px) {
+                    font-size: 1.75em;
+                    margin-bottom: .5em;
+                }
             }
 
             h2 {
-                font-size: 20px;
+                font-size: 1.25em;
                 font-weight: 500;
                 color: var(--main-color);
                 text-align: left;
                 margin-top: 0px;
                 margin-bottom: 1.5rem;
+                @media (max-width: 767px) {
+                    margin-bottom: .5em;
+                }
             }
 
             p {
@@ -126,8 +174,20 @@ body {
             }
         }
         &-right {
+            position: relative;
             width: 50%;
             position: relative;
+            opacity: 0;
+            transition: 300ms ease-in 1s;
+            transition-property: opacity;
+            &.element-show {
+                opacity: 1;
+            }
+            @media (max-width: 1199px) {
+                width: 100%;
+                transition-delay: 250ms;
+            }
+
             .doctorPage__play {
                 position: absolute;
                 z-index: 10;
@@ -136,8 +196,43 @@ body {
                 transform: translate(-50%, -50%);
                 background-color: transparent;
                 border: none;
+                padding: 0px !important;
+                @include flex();
+                @media (max-width: 1199px) {
+                    top: 10%;
+                    left: 5%;
+                    transform: translate(0%, 0%);
+                }
                 img {
                     width: 60px;
+                    @media (max-width: 991px) {
+                        width: 40px;
+                    }
+                    @media (max-width: 575px) {
+                        width: 30px;
+                    }
+                }
+                &::before, &::after {
+                    position: absolute;
+                    content: '';
+                    border: 1px solid var(--main-color);
+                    left: -10px;
+                    right: -10px;
+                    top: -10px;
+                    bottom: -10px;
+                    border-radius: 50%;
+                    animation: pulse 7s linear infinite;
+                    opacity: 0;
+                    z-index: -1;
+                    @media (max-width: 575px) {
+                        left: -5px;
+                        right: -5px;
+                        top: -5px;
+                        bottom: -5px;
+                    }
+                }
+                &::after {
+                    animation-delay: 5s;
                 }
             }
         }
@@ -148,6 +243,9 @@ body {
             height: 585px;
             object-fit: cover;
             border-radius: var(--radius);
+            @media (max-width: 1199px) {
+                height: 60vw;
+            }
         }
     }
 
@@ -159,6 +257,10 @@ body {
         font-size: 14px;
         overflow: hidden;
         margin-bottom: 3em;
+        @media (max-width: 767px) {
+            display: block;
+            border: none;
+        }
         button {
             background-color: var(--main-color);
             color: #fff;
@@ -166,12 +268,22 @@ body {
             font-size: inherit;
             border-radius: var(--radius);
             padding: 1.4em 3em;
+            @media (max-width: 767px) {
+                border-radius: 2em;
+                width: 100%;
+                margin-bottom: 1em;
+            }
         }
         &-info {
             flex: 1;
             font-size: inherit;
             @include flex(column, center, center, nowrap);
-            p {
+            @media (max-width: 767px) {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+            span {
                 font-weight: 500;
                 font-size: inherit;
                 text-align: center;
@@ -184,18 +296,80 @@ body {
 
     &__trophies {
         @include flex(row, flex-start, flex-start, wrap);
-        font-size: 14px;
+        font-size: .9em;
         &>div {
             width: 50%;
             @include flex(row, flex-start, center, wrap);
             img {
                 height: 40px;
                 margin-right: 1em;
+                @media (max-width: 767px) {
+                    height: 30px;
+                    margin-right: 5px;
+                }
             }
             p {
                 flex: 1;
                 margin: 0px !important;
                 font-weight: 500;
+            }
+        }
+    }
+
+    &__rating {
+        @include flex(row, center, flex-start, wrap);
+        gap: 4%;
+        margin-bottom: 3em;
+        @media (max-width: 1023px) {
+            gap: 2%;
+        }
+        &>div {
+            width: 22%;
+            @media (max-width: 1023px) {
+                width: 32%;
+            }
+            @media (max-width: 767px) {
+                width: 49%;
+                margin-bottom: 1em;
+            }
+            @media (max-width: 575px) {
+                width: 100%;
+            }
+        }
+    }
+    &__externalRating {
+        width: 100%;
+        @include flex(row, space-between, center, nowrap);
+        background-color: #fff;
+        border-radius: calc(var(--radius)/2);
+        padding: 10px;
+        &-value {
+            font-size: 1.625em;
+            font-weight: 400;
+        }
+        &-info {
+            p {
+                font-size: 10px;
+                font-weight: 400;
+                margin: 0px;
+            }
+        }
+        &-source {
+            @include flex(row, flex-start, center, nowrap);
+            font-size: 1em;
+            font-weight: 600;
+            line-height: 1.1em;
+            margin-bottom: 5px;
+            img {
+                width: 35px;
+                height: 35px;
+                object-fit: cover;
+                border-radius: 50%;
+                box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
+                margin-right: 5px;
+            }
+            svg {
+                width: 75px;
             }
         }
     }
@@ -212,6 +386,12 @@ body {
         &-question {
             @include flex(row, space-between, center, nowrap);
             padding: 1.5em 3em;
+            @media (max-width: 767px) {
+                padding: 1em 2em;
+            }
+            @media (max-width: 575px) {
+                padding: 1em 1.5em;
+            }
             p {
                 margin: 0px;
             }
@@ -261,15 +441,23 @@ body {
     }
 
     h3 {
-        font-size: 38px;
+        font-size: 2.375em;
         font-weight: 400;
         text-align: center;
         margin-top: 0px;
         margin-bottom: 1em;
+        opacity: 0.5;
+        transform: translateY(50%);
+        transition: 300ms ease-in;
+        transition-property: transform, opacity;
+        &.element-show {
+            transform: translateY(0%);
+            opacity: 1;
+        }
     }
 
     &__reviews {
-        @include flex(row, flex-start, flex-start, wrap);
+        @include flex(row, center, flex-start, wrap);
         gap: 2%;
         div {
             width: 32%;
@@ -290,8 +478,11 @@ body {
         padding-top: calc(var(--radius)*3);
         padding-bottom: 4em;
         margin-bottom: 3em;
+        @media (max-width: 767px) {
+            padding-top: calc(var(--radius)*5);
+        }
         &-box {
-            @include flex(row, flex-start, flex-start, wrap);
+            @include flex(row, center, flex-start, wrap);
             gap: 1%;
             div {
                 width: 24%;
@@ -300,13 +491,39 @@ body {
                     height: 470px;
                     object-fit: cover;
                     border-radius: calc(var(--radius)/4);
+                    opacity: 0.75;
+                    transform: translateY(10%);
+                    transition: 300ms ease-in;
+                    transition-property: transform, opacity;
+                    &.element-show {
+                        transform: translateY(0%);
+                        opacity: 1;
+                    }
+                    @media (max-width: 1199px) {
+                        height: 35vw;
+                    }
+                }
+                &:nth-child(2){
+                    video {
+                        transition-delay: 100ms;
+                    }
+                }
+                &:nth-child(3){
+                    video {
+                        transition-delay: 200ms;
+                    }
+                }
+                &:nth-child(4){
+                    video {
+                        transition-delay: 300ms;
+                    }
                 }
             }
         }
     }
 
     &__sertificates {
-        @include flex(row, flex-start, flex-start, wrap);
+        @include flex(row, center, flex-start, wrap);
         gap: 2%;
         div {
             width: 32%;
@@ -317,4 +534,17 @@ body {
     }
 }
 
+@keyframes pulse {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.6);
+        opacity: 0;
+    }
+}
 // styles end
